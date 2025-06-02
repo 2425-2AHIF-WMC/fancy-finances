@@ -10,6 +10,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
             crossorigin="anonymous"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <!-- falls cdn nicht geht jquery downloaden und das obere kommentieren -->
+    <script src="jquery-3.7.1.min.js"></script>
     <script src="index.js" type="module" defer></script>
 
 </head>
@@ -32,6 +35,21 @@
         <div class="col-12">
             <h2>Willkommen zu Fancy Finances!</h2>
             <p>Hier können Sie Ihre Finanzen verwalten und analysieren.</p>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="sort-select" class="form-label">Sortieren nach:</label>
+        <select class="form-select" id="sort-select">
+            <option value="date" selected>Datum</option>
+            <option value="amount">Betrag</option>
+            <option value="category">Kategorie</option>
+        </select>
+    </div>
+
+    <div class="text-center my-4" id="spinner-container">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Lade Daten...</span>
         </div>
     </div>
 

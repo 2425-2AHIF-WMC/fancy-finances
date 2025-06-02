@@ -1,0 +1,28 @@
+{
+  "bookings": [
+    {
+      "id": "5f69",
+      "date": "2025-02-12",
+      "amount": "150",
+      "category": "Spiele"
+    },
+    {
+      "id": "6f2c",
+      "date": "2024-10-30",
+      "amount": "250",
+      "category": "Essen"
+    },
+    {
+      "id": "6fc2",
+      "date": "2025-05-03",
+      "amount": "13,70",
+      "category": "Fortgehen"
+    },
+    {
+      "id": "bcb9",
+      "date": "2025-06-01",
+      "amount": "69,90",
+      "category": "Spielzeug"
+    }
+  ]
+}
