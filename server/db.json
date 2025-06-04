@@ -23,6 +23,24 @@
       "date": "2025-06-01",
       "amount": "69,90",
       "category": "Spielzeug"
+    },
+    {
+      "id": "5161",
+      "date": "2025-06-01",
+      "amount": "300",
+      "category": "Gaming"
+    },
+    {
+      "id": "41f4",
+      "date": "2025-05-16",
+      "amount": "-200",
+      "category": "Glücksspiel"
+    },
+    {
+      "id": "17bf",
+      "date": "2025-06-01",
+      "amount": "-1000",
+      "category": "Miete"
     }
   ]
 }

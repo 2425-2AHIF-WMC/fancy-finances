@@ -14,11 +14,7 @@ function init() {
         const amount = document.getElementById("amount").value;
         const category = document.getElementById("category").value;
 
-        if (!date || !amount || !category) {
-            return;
-        }
-
-        const file = {date: date, amount: parseFloat(amount.toFixed(2)), category: category};
+        const file = {date: date, amount: parseFloat(amount).toFixed(), category: category};
         Server.uploadToServer(file);
     });
 }

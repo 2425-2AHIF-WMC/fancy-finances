@@ -37,3 +37,26 @@
 section {
     padding: 60px 20px;
 }
+
+#finance-table {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#finance-table.visible {
+    opacity: 1;
+}
+
+.green {
+    color: green; !important;
+    font-weight: bold;
+}
+
+.red {
+    color: red; !important;
+    font-weight: bold;
+}
+
+td {
+    transition: color 0.3s ease;
+}

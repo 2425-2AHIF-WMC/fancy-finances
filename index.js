@@ -15,6 +15,7 @@ function createTableRow(){
     for(let i=0; i<data.length; i++)
     {
         const row = data[i];
+
         html += `<tr>
                     <td>${row.date}</td>
                     <td>${row.amount}€</td>
@@ -47,6 +48,11 @@ async function init()
     sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
     data= sorted;
     createTableRow();
+
+    const table = document.getElementById("finance-table");
+    if (table) {
+        table.classList.add("visible");
+    }
 }
 
 function sortAfterSelection() {
@@ -68,6 +74,10 @@ function sortAfterSelection() {
 
         data = sorted;
         createTableRow();
+        const table = document.getElementById("finance-table");
+        if (table) {
+            table.classList.add("visible");
+        }
     });
 }
 
