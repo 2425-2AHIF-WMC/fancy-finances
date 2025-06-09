@@ -90,11 +90,11 @@ $(()=>{
 
 export class Server{
 
-    static async uploadToServer(file)
+    static async uploadToServer(file, url="http://localhost:3000/bookings")
     {
         console.log("Uploading to server");
 
-        return await fetch("http://localhost:3000/bookings", {
+        return await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -103,11 +103,11 @@ export class Server{
         });
     }
 
-    static async downloadFromServer()
+    static async downloadFromServer(url = "http://localhost:3000/bookings")
     {
         console.log("Downloading from server");
 
-        const response =  await fetch(`http://localhost:3000/bookings`);
+        const response =  await fetch(url);
         return response.json();
     }
 }

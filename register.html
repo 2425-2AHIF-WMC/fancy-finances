@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Fancy Finances</title>
+
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+            crossorigin="anonymous"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <!-- falls cdn nicht geht jquery downloaden und das obere kommentieren -->
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="login.js" defer type="module"></script>
+    <link rel="stylesheet" href="login.css">
+    <!-- <script src="index.js" type="module" defer></script> -->
+
+</head>
+<body>
+
+<!-- Register Form -->
+<div >
+    <h2>Register</h2>
+    <input type="email" id="registerEmail" placeholder="Email">
+    <input type="password" id="registerPassword" placeholder="Password">
+    <button class="register-btn" id="registerBtn">Register</button>
+
+    <div id="registerError" class="error hidden"></div>
+    <div id="registerSuccess" class="success hidden"></div>
+</div>
+
+<!-- Welcome Screen -->
+<div class="container welcome hidden" id="welcomeScreen">
+    <h2>Welcome!</h2>
+    <p>You are logged in as <strong id="current"></strong></p>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+</body>
+</html>

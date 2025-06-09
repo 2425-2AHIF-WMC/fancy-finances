@@ -41,6 +41,29 @@
       "date": "2025-06-01",
       "amount": "-1000",
       "category": "Miete"
+    },
+    {
+      "id": "2477",
+      "date": "2025-06-07",
+      "amount": "370",
+      "category": "Counter Strike 2 Messer gezeogen"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@test.com",
+      "password": "admin123"
+    },
+    {
+      "id": 2,
+      "email": "test",
+      "password": "test123"
+    },
+    {
+      "id": 2,
+      "email": "konstantin.folger@hotmail.com",
+      "password": "Passwort123"
     }
   ]
 }
