@@ -15,7 +15,11 @@ function login() {
     // Check if user exists in "database"
     const user = users.find(u => u.email === email && u.password === password);
     if (user) {
-        current = user;
+        if (user) {
+            current = user;
+            localStorage.setItem('currentUserEmail', user.email); // Speichern
+            window.location.href = "index.html";
+        }
         document.getElementById('current').textContent = user.email;
         window.location.href = "index.html";
         // Clear form
@@ -41,29 +45,32 @@ async function register() {
     }
 
     // Add new user to "database"
-    const newUser = {
+    let newUser = {
         id: nextId++,
         email: email,
         password: password
     };
 
-   const response = await Server.uploadToServer(newUser, `http://localhost:3000/users`);
+    const response = await Server.uploadToServer(newUser, `http://localhost:3000/users`);
 
     if (!response.ok) {
         alert("Fehler beim Hochladen: " + response.status);
         return;
     }
-
     console.log('registerSuccess', 'Registration successful! You can now login.');
     // Clear form
     document.getElementById('registerEmail').value = '';
     document.getElementById('registerPassword').value = '';
     // Auto switch to login after 2 seconds
+
     setTimeout(() => {
         console.log('registration successful');
         window.location.href = "login.html";
     }, 3000);
+
+
 }
+
 // Logout function
 function logout() {
     current = null;
@@ -82,9 +89,11 @@ $(async () => {
     }
 });
 
+// login.js
+document.addEventListener('DOMContentLoaded', () => {
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', login);
+    }
+});
 
-
-
-// Display current users in console (for testing)
-console.log('Current users in database:', users);
-console.log('Try logging in with: admin@test.com/admin123 or user@test.com/user123');

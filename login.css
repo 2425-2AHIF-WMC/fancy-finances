@@ -1,7 +1,7 @@
 git body {
     font-family: Arial, sans-serif;
-    max-width: 400px;
-    margin: 50px auto;
+    max-width: 800px;
+    margin: 50px;
     padding: 20px;
 }
 .container {
@@ -71,4 +71,9 @@ button {
 .success {
     color: #28a745;
     margin: 10px 0;
+}
+.underline{
+    color: blue;
+    text-decoration: underline;
+    margin-left:17rem;
 }

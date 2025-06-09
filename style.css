@@ -60,3 +60,23 @@ section {
 td {
     transition: color 0.3s ease;
 }
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #555;
+    animation: typing 10s steps(30, end) infinite, blink-caret 0.75s step-end infinite;
+}
+
+/* Langsames Tippen + Löschen */
+@keyframes typing {
+    0% { width: 0 }
+    40% { width: 100% }
+    60% { width: 100% }
+    100% { width: 0 }
+}
+
+/* Blinkender Cursor */
+@keyframes blink-caret {
+    50% { border-color: transparent; }
+}

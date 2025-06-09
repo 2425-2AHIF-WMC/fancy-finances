@@ -4,72 +4,90 @@
     <meta charset="UTF-8">
     <title>Fancy Finances</title>
 
-    <link href="style.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <!-- Optional: Custom CSS -->
+    <link href="style.css" rel="stylesheet">
+
+    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
             crossorigin="anonymous"></script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
-    <!-- falls cdn nicht geht jquery downloaden und das obere kommentieren -->
+
+    <!-- jQuery -->
     <script src="jquery-3.7.1.min.js"></script>
+
+    <!-- Custom JS -->
     <script src="index.js" type="module" defer></script>
-
 </head>
-<body>
-<div>
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="addTransaction.html">Transaktion Hinzufügen</a></li>
-            <li><a href="Summary.html">Zusammenfassung</a></li>
-            <li><a href="#contact">Kontakt</a></li>
-        </ul>
-    </nav>
-</div>
+<body class="bg-light">
 
-
-<div class="container">
-    <h1>Fancy Finances</h1>
-    <div class="row">
-        <div class="col-12">
-            <h2>Willkommen zu Fancy Finances!</h2>
-            <p>Hier können Sie Ihre Finanzen verwalten und analysieren.</p>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">Fancy Finances</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="addTransaction.html">Transaktion Hinzufügen</a></li>
+                <li class="nav-item"><a class="nav-link" href="Summary.html">Zusammenfassung</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
+            </ul>
         </div>
     </div>
+</nav>
 
-    <div class="mb-3">
+<!-- Inhalt -->
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="h4">Willkommen zu Fancy Finances!</h2>
+        <p class="text-muted typewriter">Hier können Sie Ihre Finanzen verwalten und analysieren.</p>
+
+    </div>
+
+    <!-- Sortierfeld -->
+    <div class="mb-4">
         <label for="sort-select" class="form-label">Sortieren nach:</label>
-        <select class="form-select" id="sort-select">
+        <select class="form-select w-auto" id="sort-select">
             <option value="date" selected>Datum</option>
             <option value="amount">Betrag</option>
             <option value="category">Kategorie</option>
         </select>
     </div>
 
-    <div class="text-center my-4" id="spinner-container">
+    <!-- Lade-Spinner -->
+    <div class="text-center my-4 d-none" id="spinner-container">
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Lade Daten...</span>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-12">
-            <h3>Finanzübersicht</h3>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Datum</th>
-                    <th>Betrag</th>
-                    <th>Kategorie</th>
-                </tr>
-                </thead>
-                <tbody id="finance-table-body">
-
-                </tbody>
-            </table>
+    <!-- Finanzübersicht -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Finanzübersicht</h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Betrag</th>
+                        <th scope="col">Kategorie</th>
+                    </tr>
+                    </thead>
+                    <tbody id="finance-table-body">
+                    <!-- Dynamisch gefüllt -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>

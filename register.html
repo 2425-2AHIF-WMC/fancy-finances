@@ -14,28 +14,21 @@
     <!-- falls cdn nicht geht jquery downloaden und das obere kommentieren -->
     <script src="jquery-3.7.1.min.js"></script>
     <script src="login.js" defer type="module"></script>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="login1.css">
     <!-- <script src="index.js" type="module" defer></script> -->
 
 </head>
 <body>
 
 <!-- Register Form -->
-<div >
+<div>
     <h2>Register</h2>
     <input type="email" id="registerEmail" placeholder="Email">
     <input type="password" id="registerPassword" placeholder="Password">
-    <button class="register-btn" id="registerBtn">Register</button>
+    <button class="register-btn" id="registerBtn" >Register</button>
 
     <div id="registerError" class="error hidden"></div>
     <div id="registerSuccess" class="success hidden"></div>
-</div>
-
-<!-- Welcome Screen -->
-<div class="container welcome hidden" id="welcomeScreen">
-    <h2>Welcome!</h2>
-    <p>You are logged in as <strong id="current"></strong></p>
-    <button class="logout-btn" onclick="logout()">Logout</button>
 </div>
 </body>
 </html>
