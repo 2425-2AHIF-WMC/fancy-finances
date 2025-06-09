@@ -6,6 +6,9 @@ $(() => {
     console.log("Summary initialized");
     init();
 
+    document.getElementById("timeFilter").addEventListener("change", () => {
+        updateSummary();
+    });
 });
 
 async function init() {
@@ -17,7 +20,32 @@ function updateSummary() {
     let income = 0;
     let expenses = 0;
 
-    for (let entry of data) {
+    const selectedRange = document.getElementById("timeFilter").value;
+    const now = new Date();
+    let fromDate;
+
+    switch (selectedRange) {
+        case "1m":
+            fromDate = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+            break;
+        case "3m":
+            fromDate = new Date(now.getFullYear(), now.getMonth() - 3, now.getDate());
+            break;
+        case "6m":
+            fromDate = new Date(now.getFullYear(), now.getMonth() - 6, now.getDate());
+            break;
+        case "1y":
+            fromDate = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+            break;
+        default:
+            fromDate = null;
+    }
+
+    const filteredData = fromDate
+        ? data.filter(entry => new Date(entry.date) >= fromDate)
+        : data;
+
+    for (let entry of filteredData) {
         const amount = parseFloat(entry.amount);
         if (amount >= 0) {
             income += amount;
