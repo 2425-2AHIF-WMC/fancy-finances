@@ -11,6 +11,9 @@
     <!-- Optional: Custom CSS -->
     <link href="style.css" rel="stylesheet">
 
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
@@ -47,7 +50,6 @@
     <div class="text-center mb-4">
         <h2 class="h4">Willkommen zu Fancy Finances!</h2>
         <p class="text-muted typewriter">Hier können Sie Ihre Finanzen verwalten und analysieren.</p>
-
     </div>
 
     <!-- Sortierfeld -->
@@ -68,7 +70,7 @@
     </div>
 
     <!-- Finanzübersicht -->
-    <div class="card shadow-sm">
+    <div class="card shadow-sm mb-5">
         <div class="card-body">
             <h3 class="card-title mb-3">Finanzübersicht</h3>
             <div class="table-responsive">
@@ -85,9 +87,116 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Charts -->
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <h5 class="text-center">Gesamteinnahmen</h5>
+                    <canvas id="incomeChart"></canvas>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-center">Gesamtausgaben</h5>
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Bilanz -->
+            <div class="mt-4 text-center fs-4 fw-bold" id="balance-container">
+                Saldo: <span id="balanceAmount">€ 0</span>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    // Beispiel-Daten
+    const labels = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul'];
+    const incomeData = [700, 900, 800, 1000, 1200, 1300, 1300];
+    const expenseData = [400, 500, 450, 600, 650, 500, 500];
+
+    // Summen berechnen
+    const totalIncome = incomeData.reduce((a,b) => a + b, 0);
+    const totalExpense = expenseData.reduce((a,b) => a + b, 0);
+    const balance = totalIncome - totalExpense;
+
+    // Bilanz anzeigen
+    document.getElementById('balanceAmount').textContent = `€ ${balance.toLocaleString('de-DE')}`;
+
+    // Gemeinsame Chart-Optionen
+    const commonOptions = {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { color: '#333', font: { size: 14 } },
+                grid: { color: '#eee' }
+            },
+            x: {
+                ticks: { color: '#333', font: { size: 14 } },
+                grid: { color: '#fafafa' }
+            }
+        },
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                backgroundColor: '#333',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                mode: 'index',
+                intersect: false
+            }
+        },
+        interaction: {
+            mode: 'nearest',
+            axis: 'x',
+            intersect: false
+        }
+    };
+
+    // Einnahmen-Chart
+    const ctxIncome = document.getElementById('incomeChart').getContext('2d');
+    new Chart(ctxIncome, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Einnahmen',
+                data: incomeData,
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 3,
+                tension: 0.3,
+                pointRadius: 5,
+                pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                pointHoverRadius: 7,
+            }]
+        },
+        options: commonOptions
+    });
+
+    // Ausgaben-Chart
+    const ctxExpense = document.getElementById('expenseChart').getContext('2d');
+    new Chart(ctxExpense, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Ausgaben',
+                data: expenseData,
+                fill: true,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 3,
+                tension: 0.3,
+                pointRadius: 5,
+                pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                pointHoverRadius: 7,
+            }]
+        },
+        options: commonOptions
+    });
+</script>
 
 </body>
 </html>
