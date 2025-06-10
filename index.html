@@ -8,11 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 
-    <!-- Optional: Custom CSS -->
     <link href="summary.css" rel="stylesheet">
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/summary-js.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
@@ -108,95 +107,7 @@
     </div>
 </div>
 
-<script>
-    // Beispiel-Daten
-    const labels = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul'];
-    const incomeData = [700, 900, 800, 1000, 1200, 1300, 1300];
-    const expenseData = [400, 500, 450, 600, 650, 500, 500];
 
-    // Summen berechnen
-    const totalIncome = incomeData.reduce((a,b) => a + b, 0);
-    const totalExpense = expenseData.reduce((a,b) => a + b, 0);
-    const balance = totalIncome - totalExpense;
-
-    // Bilanz anzeigen
-    document.getElementById('balanceAmount').textContent = `€ ${balance.toLocaleString('de-DE')}`;
-
-    // Gemeinsame Chart-Optionen
-    const commonOptions = {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true,
-                ticks: { color: '#333', font: { size: 14 } },
-                grid: { color: '#eee' }
-            },
-            x: {
-                ticks: { color: '#333', font: { size: 14 } },
-                grid: { color: '#fafafa' }
-            }
-        },
-        plugins: {
-            legend: { display: false },
-            tooltip: {
-                backgroundColor: '#333',
-                titleColor: '#fff',
-                bodyColor: '#fff',
-                mode: 'index',
-                intersect: false
-            }
-        },
-        interaction: {
-            mode: 'nearest',
-            axis: 'x',
-            intersect: false
-        }
-    };
-
-    // Einnahmen-Chart
-    const ctxIncome = document.getElementById('incomeChart').getContext('2d');
-    new Chart(ctxIncome, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Einnahmen',
-                data: incomeData,
-                fill: true,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 3,
-                tension: 0.3,
-                pointRadius: 5,
-                pointBackgroundColor: 'rgba(75, 192, 192, 1)',
-                pointHoverRadius: 7,
-            }]
-        },
-        options: commonOptions
-    });
-
-    // Ausgaben-Chart
-    const ctxExpense = document.getElementById('expenseChart').getContext('2d');
-    new Chart(ctxExpense, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Ausgaben',
-                data: expenseData,
-                fill: true,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 3,
-                tension: 0.3,
-                pointRadius: 5,
-                pointBackgroundColor: 'rgba(255, 99, 132, 1)',
-                pointHoverRadius: 7,
-            }]
-        },
-        options: commonOptions
-    });
-</script>
 
 </body>
 </html>
